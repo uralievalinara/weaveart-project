@@ -1,33 +1,41 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './ArtistSection.css';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styles from './ArtistSection.module.css'; // Проверяем, что импорт правильный
 
 export default function ArtistSection({ artists = [] }) {
-  const history = useHistory();
+  const navigate = useNavigate(); 
 
   return (
-    <div className="artist-section">
-      <h2 className="section-title">Some of our artists:</h2>
-      <div className="artist-grid">
+    <div className={styles.artistSection}> {/* Проверяем, что имя класса совпадает */}
+      <h2 className={styles.sectionTitle}>Some of our artists:</h2>
+      <div className={styles.artistGrid}>
         {artists.map((artist) => (
           <div
             key={artist.id}
-            className="artist-card"
-            onClick={() => history.push(`/artist/${artist.id}`)} // Перенаправление на страницу художника
+            className={styles.artistCard}
+            onClick={() => navigate(`/artist/${artist.id}`)}
           >
-            <div className="image-container">
-              <img src={artist.photo} alt={artist.name} className="artist-photo" />
+            <div className={styles.imageContainer}>
+              <img src={artist.photo} alt={artist.name} className={styles.artistPhoto} />
             </div>
-            <p className="artist-name">{artist.name}</p>
+            <p className={styles.artistName}>{artist.name}</p>
           </div>
         ))}
       </div>
-      <button
-        className="view-all-button"
-        onClick={() => history.push('/artist')} // Переход на страницу всех художников
-      >
+      <button className={styles.viewAllButton} onClick={() => navigate('/artist')}>
         View All
       </button>
     </div>
   );
 }
+
+ArtistSection.propTypes = {
+  artists: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      photo: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

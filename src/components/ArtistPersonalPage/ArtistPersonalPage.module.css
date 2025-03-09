@@ -1,0 +1,145 @@
+.artistPersonalPage {
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 40px 60px;
+}
+
+/* Заголовок и биография */
+.artistHeader {
+  text-align: left;
+  margin-bottom: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artistHeader h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.artistHeader p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+/* Фотографии художника */
+.artistPhotos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.artistPhoto1 {
+  width: 330px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.artistPhoto2 {
+  width: 800px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Работы художника */
+.artistWorks {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.artistWorks h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding-left: 0;
+}
+
+/* Сетка работ */
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.workCard {
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.workCard:hover {
+  transform: scale(1.05);
+}
+
+.workImage {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.workTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.workPrice {
+  font-size: 14px;
+  color: #666;
+}
+.subscribe {
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #001f3f;
+  width: 100%;
+  margin-right: 30vh;
+  text-align: center;
+  margin-top: 60px;
+} 
+
+.subscribe p {
+  background-color: #001f3f;
+  color: white;
+}
+
+.subscribe h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  padding-right: 18vh;
+  text-align: center;
+  background-color: #001f3f;
+  color: white;
+  font-weight: lighter;
+}
+
+.subscribeForm {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #001f3f;
+}
+
+.subscribeInput {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #001f3f;
+  margin-top: 30px;
+
+}

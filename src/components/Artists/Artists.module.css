@@ -1,0 +1,52 @@
+.artistsSection {
+    padding: 40px 20px;
+    text-align: left;
+  }
+  
+  .artistsSectionTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 40vh;
+  }
+  
+  .artistsGrid {
+    display: flex;
+    justify-content: center; /* Центрируем */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto; /* Центрируем секцию */
+  }
+  
+  .artistsCard {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 220px; /* Делаем размер карточки фиксированным */
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .artistsImageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .artistsPhoto {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; /* Обрезаем фото, если оно не квадратное */
+    border-radius: 10px;
+  }
+  
+  .artistsName {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px
+  }
+  

@@ -1,0 +1,36 @@
+.termsOfUsePage {
+  font-family: 'Arial', sans-serif;
+  padding: 40px 15%;
+  color: #333;
+  line-height: 1.6;
+  
+}
+
+.termsOfUseHeader {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.termsOfUseHeader h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.termsOfUseContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.termsOfUseContent h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.termsOfUseContent p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+}

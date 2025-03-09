@@ -1,53 +1,57 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import './ArtPersonalPage.css';
+import styles from './ArtPersonalPage.module.css';
 
-export default function ArtPersonalPage({ works, artists }) {
+const ArtPersonalPage = ({ works = [] }) => {
   const { workId } = useParams();
-  const work = works.find((w) => w.id === parseInt(workId, 10));
-  const artist = artists.find((a) => a.id === work.artistId);
+
+  // Поиск работы с useCallback
+  const getWorkById = useCallback(() => {
+    return works && works.length > 0 ? works.find(work => work.id === Number(workId)) : null;
+  }, [works, workId]);
+
+  const work = useMemo(() => getWorkById(), [getWorkById]);
 
   if (!work) {
-    return <h2>Work not found</h2>;
+    return <h2 className={styles.errorMessage}>Work not found</h2>;
   }
 
   return (
-    <div className="art-personal-page">
-      <header className="art-header">
-        <div className="art-header-container">
-          <img src={work.image} alt={work.title} className="art-image-large" />
-          <div className="artist-info">
-            <img src={artist.photo} alt={artist.name} className="artist-photo" />
-            <p className='artist-name'>
-              More about: {artist.name}
-            </p>
-            <p className="art-price">Price: {work.price}</p>
-            <section className="art-options">
-              
-              <div className="options-container">
-                <div className="size-selector">
-                  <label htmlFor="size">Size:</label>
-                  <select id="size" name="size">
-                    <option value="10x10">10 cm x 10 cm</option>
-                    <option value="20x20">20 cm x 20 cm</option>
-                    <option value="30x30">30 cm x 30 cm</option>
-                  </select>
-                </div>
-                <div className="quantity-selector">
-                  <label htmlFor="quantity">Pack Quantity:</label>
-                  <input id="quantity" name="quantity" type="number" min="1" defaultValue="1" />
-                </div>
-              </div>
-              <button className="add-to-cart">Add to Cart</button>
-            </section>
+    <div className={styles.artPersonalPage}>
+      <div className={styles.artHeaderContainer}>
+        <img src={work.image} alt={work.topic} className={styles.artImageLarge} />
+
+        <div className={styles.artistInfo}>
+          {work.artistPhoto && (
+            <img src={work.artistPhoto} alt={work.name} className={styles.artistPhoto} />
+          )}
+          <p className={styles.artistName}>{work.name}</p>
+          <div className={styles.artPrice}>
+            <p>{work.price} KGS</p>
           </div>
         </div>
-      </header>
+      </div>
 
-      <section className="art-description">
-        <h2>Description</h2>
-        <p>{work.description || 'No description available.'}</p>
-      </section>
+      <div className={styles.artOptions}>
+        <div className={styles.optionsContainer}>
+          <div className={styles.sizeSelector}>
+            <label>Size:</label>
+            <select>
+              <option>30cm x 30cm</option>
+              <option>50cm x 50cm</option>
+            </select>
+          </div>
+
+          <div className={styles.quantitySelector}>
+            <label>Pack quantity:</label>
+            <input type="number" defaultValue={1} min={1} />
+          </div>
+        </div>
+
+        <button className={styles.addToCart}>Add to cart</button>
+      </div>
     </div>
   );
-}
+};
+
+export default React.memo(ArtPersonalPage);

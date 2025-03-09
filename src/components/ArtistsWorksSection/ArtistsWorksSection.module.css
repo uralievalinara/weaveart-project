@@ -1,0 +1,78 @@
+.artistsWorkSection {
+    padding: 40px 10%;
+    text-align: center;
+}
+
+/* Заголовок */
+.sectionTitle {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    font-family: 'Georgia', serif;
+    text-align: left;
+    padding-left: 10%;
+}
+
+/* Сетка карточек */
+.worksGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    gap: 30px; 
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+/* Карточка работы */
+.workCard {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.workCard:hover {
+    transform: scale(1.05);
+}
+
+/* Изображение */
+.workImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Название работы */
+.workTitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Цена */
+.workPrice {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Кнопка "View All" */
+.viewAllButton {
+    margin: 50px auto;
+    display: block;
+    padding: 12px 24px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.viewAllButton:hover {
+    background-color: #333;
+}

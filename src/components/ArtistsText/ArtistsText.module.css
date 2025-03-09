@@ -1,10 +1,9 @@
-.artists-text-section {
+.artistsTextSection {
     padding: 60px 15%; /* Пространство вокруг текста */
     text-align: center; /* Центрирование заголовка */
-    
 }
 
-.text-section-title {
+.textSectionTitle {
     font-size: 30px; /* Размер заголовка */
     font-weight: lighter; /* Жирный шрифт */
     margin-bottom: 25px; /* Отступ между заголовком и текстом */
@@ -14,7 +13,7 @@
     text-align: center; /* Заголовок выравнивается по центру */
 }
 
-.text-section-content {
+.textSectionContent {
     font-size: 20px; /* Размер текста чуть крупнее для читабельности */
     line-height: 1.8; /* Оптимальное расстояние между строками */
     color: #555; /* Средне-серый цвет для текста */
@@ -23,6 +22,6 @@
     font-family: 'Arial', sans-serif; /* Простой, легко читаемый шрифт */
 }
 
-.text-section-content:last-child {
+.textSectionContent:last-child {
     margin-bottom: 0; /* Убираем отступ после последнего абзаца */
 }

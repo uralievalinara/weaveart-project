@@ -1,0 +1,30 @@
+.blogPage {
+    font-family: 'Arial', sans-serif;
+    padding: 40px 15%;
+    color: #333;
+    line-height: 1.6;
+    
+}
+
+.blogHeader {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.blogHeader h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.blogContent {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.blogContent p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.8;
+}

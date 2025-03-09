@@ -1,32 +1,43 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './Artists.css';
+import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styles from './Artists.module.css'; 
 
 export default function Artists({ ArtistsPage = [] }) {
-  const history = useHistory(); // Для навигации
+  const navigate = useNavigate();
+
+  const memoizedArtists = useMemo(
+    () =>
+      ArtistsPage.map((artist) => (
+        <div
+          key={artist.id}
+          className={styles.artistsCard} // Используем styles вместо "className"
+          onClick={() => navigate(`/artistpersonalpage/${artist.id}`)}
+          style={{ cursor: 'pointer' }}
+        >
+          <div className={styles.artistsImageContainer}>
+            <img src={artist.photo} alt={artist.name} className={styles.artistsPhoto} />
+          </div>
+          <p className={styles.artistsName}>{artist.name}</p>
+        </div>
+      )),
+    [ArtistsPage, navigate]
+  );
 
   return (
-    <div className="artists-section">
-      <h2 className="artists-section-title">Our Artists</h2>
-      <div className="artists-grid">
-        {ArtistsPage.map((artist) => (
-          <div
-            key={artist.id}
-            className="artists-card"
-            onClick={() => history.push(`/artistpersonalpage/${artist.id}`)} // Перенаправление на страницу художника
-            style={{ cursor: 'pointer' }}
-          >
-            <div className="artists-image-container">
-              <img
-                src={artist.photo}
-                alt={artist.name}
-                className="artists-photo"
-              />
-            </div>
-            <p className="artists-name">{artist.name}</p>
-          </div>
-        ))}
-      </div>
+    <div className={styles.artistsSection}>
+      <h2 className={styles.artistsSectionTitle}>Our Artists</h2>
+      <div className={styles.artistsGrid}>{memoizedArtists}</div>
     </div>
   );
 }
+
+Artists.propTypes = {
+  ArtistsPage: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      photo: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

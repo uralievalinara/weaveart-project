@@ -1,12 +1,12 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import './ArtistPersonalPage.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styles from './ArtistPersonalPage.module.css'; 
 
 export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
-  const { artistId } = useParams(); // Получаем ID художника из URL
-  const history = useHistory();
+  const { artistId } = useParams(); 
+  const navigate = useNavigate(); 
 
-  // Преобразуем artistId из строки в число
   const artist = ArtistInfoPage?.find((a) => a.id === parseInt(artistId, 10));
   const artistsWorks = works?.filter((work) => work.artistId === parseInt(artistId, 10));
 
@@ -15,54 +15,75 @@ export default function ArtistPersonalPage({ ArtistInfoPage, works }) {
   }
 
   return (
-    <div className="artist-personal-page">
-      <header className="artist-header">
+    <div className={styles.artistPersonalPage}>
+      <header className={styles.artistHeader}>
         <h1>{artist.name}</h1>
         <p>{artist.bio}</p>
       </header>
-      <div className="artist-photos">
-        <img src={artist.photo} alt={artist.name} className="artist-photo-1" />
-        <img src={artist.secondaryPhoto} alt={`${artist.name}`} className="artist-photo-2" />
+      <div className={styles.artistPhotos}>
+        <img src={artist.photo} alt={artist.name} className={styles.artistPhoto1} />
+        <img src={artist.secondaryPhoto} alt={artist.name} className={styles.artistPhoto2} />
       </div>
 
-      <section className="artist-works">
+      <section className={styles.artistWorks}>
         <h2>Artist's works:</h2>
-        <div className="works-grid">
+        <div className={styles.worksGrid}>
           {artistsWorks.map((work) => (
             <div
               key={work.id}
-              className="work-card"
-              onClick={() => history.push(`/artpersonalpage/${work.id}`)}
+              className={styles.workCard}
+              onClick={() => navigate(`/artpersonalpage/${work.id}`)} // Заменили history.push
               style={{ cursor: 'pointer' }}
             >
-              <img src={work.image} alt={work.topic} className="work-image" />
-              <p className="work-title">{work.topic}</p>
-              <p className="work-price">Price: {work.price}</p>
+              <img src={work.image} alt={work.topic} className={styles.workImage} />
+              <p className={styles.workTitle}>{work.topic}</p>
+              <p className={styles.workPrice}>Price: {work.price}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Subscribe Section */}
-      <section className="subscribe">
+      <section className={styles.subscribe}>
         <h2>Subscribe to our emails</h2>
         <p>Stay informed about new works and updates from this artist.</p>
         <form
-          className="subscribe-form"
+          className={styles.subscribeForm}
           onSubmit={(e) => {
             e.preventDefault();
-            alert("Thank you for subscribing!");
+            alert('Thank you for subscribing!');
           }}
         >
           <input
             type="email"
-            className="subscribe-input"
+            className={styles.subscribeInput}
             placeholder="Enter your email"
             required
           />
-          
         </form>
       </section>
     </div>
   );
 }
+
+// Валидация пропсов
+ArtistPersonalPage.propTypes = {
+  ArtistInfoPage: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      bio: PropTypes.string.isRequired,
+      photo: PropTypes.string.isRequired,
+      secondaryPhoto: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  works: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      artistId: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      topic: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

@@ -1,0 +1,98 @@
+.artPersonalPage {
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  color: #333;
+}
+
+.artHeaderContainer {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.artImageLarge {
+  width: 540px;
+  height: 560px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.artistInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.artistName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.artistPhoto {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artPrice {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+
+.artOptions {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.sizeSelector,
+.quantitySelector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sizeSelector select,
+.quantitySelector input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.addToCart {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.addToCart:hover {
+  background-color: #333;
+}
+
+.errorMessage {
+  text-align: center;
+  font-size: 24px;
+  color: red;
+  margin-top: 50px;
+}

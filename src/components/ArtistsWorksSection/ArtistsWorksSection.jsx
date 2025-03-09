@@ -1,75 +1,41 @@
-import React from 'react';
-import './ArtistsWorksSection.css';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import styles from './ArtistsWorksSection.module.css';
 
-const artistsWork = [
-  {
-    name: 'Artist Name 1',
-    topic: 'Abstract',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 2',
-    topic: 'Landscape',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 3',
-    topic: 'Portrait',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 4',
-    topic: 'Abstract',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 1',
-    topic: 'Abstract',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 2',
-    topic: 'Landscape',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 3',
-    topic: 'Portrait',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  },
-  {
-    name: 'Artist Name 4',
-    topic: 'Abstract',
-    price: '$$$',
-    image: 'https://via.placeholder.com/150',
-  }
-];
-
-const ArtistsWorksSection = () => {
-  return (
-    <div className="artists-work-section">
-      <h2>Our artists work:</h2>
-      <div className="grid-container">
-        {artistsWork.map((work, index) => (
-          <div key={index} className="grid-item">
-            <img src={work.image} alt={`${work.name} - ${work.topic}`} />
-            <div className="info">
-              <p><strong>{work.topic}</strong></p>
-              <p><strong>Price:</strong> {work.price}</p>
-            </div>
-          </div>
-        ))}
+const ArtistsWorksSection = ({ artistsWorks = [] }) => {
+  // Оптимизированный рендер списка работ
+  const worksList = useMemo(() => {
+    return artistsWorks.map((work) => (
+      <div key={work.id} className={styles.workCard}>
+        <img src={work.image} alt={`${work.name} - ${work.topic}`} className={styles.workImage} />
+        <div className={styles.info}>
+          <p className={styles.workTitle}>{work.topic}</p>
+          <p className={styles.workPrice}><strong>Price:</strong> {work.price}</p>
+        </div>
       </div>
-      <button className="view-all-button">View all</button>
+    ));
+  }, [artistsWorks]);
+
+  return (
+    <div className={styles.artistsWorkSection}>
+      <h2 className={styles.sectionTitle}>Our artists work:</h2>
+      <div className={styles.worksGrid}>{worksList}</div>
+      <button className={styles.viewAllButton}>View all</button>
     </div>
   );
+};
+
+// Пропсы для валидации
+ArtistsWorksSection.propTypes = {
+  artistsWorks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      topic: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ArtistsWorksSection;

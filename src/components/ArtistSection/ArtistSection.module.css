@@ -1,0 +1,80 @@
+.artistSection {
+    padding: 40px 20px;
+    text-align: left;
+}
+
+/* Заголовок "Some of our artists:" */
+.sectionTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 40vh;
+    
+}
+
+/* Грид для художников */
+.artistGrid {
+    display: flex;
+    justify-content: center; /* Центрируем */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto; /* Центрируем секцию */
+}
+
+/* Карточка художника */
+.artistCard {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 220px; /* Делаем размер карточки фиксированным */
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.artistCard:hover {
+    transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+/* Контейнер для изображения */
+.imageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Фото художника */
+.artistPhoto {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; /* Обрезаем фото, если оно не квадратное */
+    border-radius: 10px;
+}
+
+/* Имя художника */
+.artistName {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Кнопка "View All" */
+.viewAllButton {
+    background-color: #002855; /* Темно-синий цвет, чтобы сочеталось с хедером */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 40px;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 92vh;
+}
+
+.viewAllButton:hover {
+    background-color: #0047ab; /* Посветлее при наведении */
+}
